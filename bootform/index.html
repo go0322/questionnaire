@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+    integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="css/style.css">
+  <title>ご利用アンケート</title>
+</head>
+
+<body>
+  <div class="container">
+    <header class="mt-4 text-success">
+      <!-- 
+        グリッドシステム：画面を12カラムに分け、そのうち何カラム分のスペースを利用するか設定。
+        ☆オフセット
+          左右に2カラム分の余白を作る場合
+          <div class="col-md-8 offset-md-2">
+          となる
+          *上記はbootstrap4の場合。3ではcol-md-offset-2"と表記
+      -->
+      <div class="row">
+        <div class="col-sm-6">
+          <h1  class="h5 font-weight-bold m-0">ご利用アンケート</h1>
+        </div>
+        <div class="col-sm-6 align-right">
+          <a href="#">HOMEへ戻る</a>
+        </div>
+      </div>
+        </header>
+  </div><!-- /container -->
+
+  <hr class="border border-success my-4">
+
+    <div class="container">
+      <!-- form要素
+      　action属性：フォームの送信先を設定
+        method属性：getまたはpostを指定
+          get：URLの?の後に送信内容を付け足して送信。送信内容＝URLパラメーター。
+              googleやamazonなどのキーワード検索がこれを採用している。
+              URLをコピーすれば簡単に検索結果画面などを共有できるが、その反面個人情報や大量の情報の送信には向かない
+          post：URLを変化させずにフォーム内容を送信。個人情報、大量の情報を送信するのに向いている。
+        *method属性を省略するとget指定になる -->
+      <form　action="https://book.h20-space.com/html/form.php" method="post" class="row">
+        <div class="col-sm-8 offset-sm-2">
+          <p>この度は、本書をご利用頂き有難うございます。<br>恐れ入りますが、以下のフォームにご記入頂き、送信して頂けると幸いです。</p>
+          <!-- form-groupクラス　フォーム用のスタイルレイアウト 
+            記入欄があるものは、横幅を伸ばすためにform-controlクラスを指定する
+          -->
+          <div class="form-group">
+            <label for="name" class="strong"><strong>お名前</strong><span class="badge badge-danger ml-3">必須</span></label>
+            <input id="name" type="text" name="name" class="form-control" placeholder="例) 田中 太郎" required>
+          </div>
+
+          <div class="form-group">
+            <label for="mymail"><strong>メールアドレス</strong><span class="badge badge-danger ml-3">必須</span></label>
+            <input id="mymail" type="email" name="mymail" class="form-control" placeholder="例) taro1234@yahoo.co.jp" required>
+          </div>
+
+          <div class="form-group">
+            <label for="telnum"><strong>電話番号</strong><span class="badge badge-danger ml-3">必須</span></label>
+            <input id="telnum" type="tel" name="telnum" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="job"><strong>ご職業</strong><span class="badge badge-danger ml-3">必須</span></label>
+            <select id="job" name="job" class="form-control" required>
+              <!-- value属性の値は表示ラベルの内容とは異なる値でも良い。
+              ユーザーが選択するときは会社員や学生と表示されるが、実際にフォームが送信されているときにvalueで設定した値が送信される
+              *ドロップダウンリストを作るときは、ユーザーが"選択していない"ことを正確にデータとして伝えるべく、必ず最初にvalue値を空欄にした選択肢を用意するようにしよう-->
+              <option value="">選択してください</option>
+              <option value="学生">学生</option>
+              <option value="会社員">会社員</option>
+              <option value="その他">その他</option>
+            </select>
+          </div>
+          
+          <p><strong>性別</strong><span class="badge badge-danger ml-3">必須</span></p>
+          <!-- nameに指定する値は重複しないようにつけるのが基本ルールだが、同じ設問項目の選択肢の場合には同じ値にする -->
+          <input id="male" type="radio" name="gender" required checked>
+          <label for="male">男性</label>
+          <input id="female" type="radio" name="gender" required>
+          <label for="female">女性</label>
+
+          <div class="form-group mt-3">
+            <label><strong>知りたい内容</strong>(※複数選択可)<span class="badge badge-danger ml-3">必須</span></label>
+            <div class="checkbox">
+              <label><input type="checkbox" name="q1" value="html">HTML</label>
+              <label><input type="checkbox" name="q1" value="css">CSS</label>
+              <label><input type="checkbox" name="q1" value="javascript">JavaScript</label>
+            </div>  
+          </div>
+
+          <div class="form-group">
+            <label><strong>理解度はいかがですか？</strong></label>
+            <div>
+              <label class="radio-inline"><input type="radio" name="q2" value="1">理解できなかった</label>
+              <label class="radio-inline"><input type="radio" name="q2" value="2">だいたい理解できた</label>
+              <label class="radio-inline"><input type="radio" name="q2" value="3">理解できた</label>
+              <label class="radio-inline"><input type="radio" name="q2" value="" checked>回答しない</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message"><strong>ご意見</strong></label>
+            <textarea name="message" id="message" cols="10" rows="10" class="form-control"></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-default">送信する</button>
+          <button type="reset" class="btn btn-default">記入内容をリセット</button>
+
+        </div><!-- /col-sm-8-->
+      </form>
+    </div>  
+  <hr  class="border border-success my-4">
+
+  <div class="container">
+    <footer>
+      <p class="text-center"><small>&copy; H2O space</small></p>
+    </footer>
+  </div><!-- /container2 -->
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+    integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
